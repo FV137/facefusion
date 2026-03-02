@@ -230,7 +230,7 @@ def forward_nsfw(vision_frame : VisionFrame, model_name : str) -> Detection:
 	if model_name in [ 'nsfw_2', 'nsfw_3' ]:
 		return detection[0]
 
-	return detection
+	return False
 
 
 def prepare_detect_frame(temp_vision_frame : VisionFrame, model_name : str) -> VisionFrame:
