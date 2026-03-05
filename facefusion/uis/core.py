@@ -92,10 +92,12 @@ def launch() -> None:
 				ui_layout_module.render()
 				ui_layout_module.listen()
 
-	for ui_layout in state_manager.get_item('ui_layouts'):
-		ui_layout_module = load_ui_layout_module(ui_layout)
-		ui_layout_module.run(ui)
-
+	    # Launch the Gradio app with server configuration
+    ui.launch(
+        server_name = '0.0.0.0',
+        server_port = 7860,
+        show_error = True
+    )
 
 def get_theme() -> gradio.Theme:
 	return gradio.themes.Base(
