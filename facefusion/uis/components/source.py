@@ -21,8 +21,8 @@ def render() -> None:
 	has_source_audio = has_audio(state_manager.get_item('source_paths'))
 	has_source_image = has_image(state_manager.get_item('source_paths'))
 	SOURCE_FILE = gradio.File(
-    label = translator.get('uis.target_file'),
-    value = state_manager.get_item('target_path') if is_target_image or is_target_video else None,
+    label = translator.get('uis.source_file'),
+    value = state_manager.get_item('source_path') if is_source_image or is_source_video else None,
     file_types = [
         ".jpg", ".JPG", ".jpeg", ".JPEG",
         ".png", ".PNG",
