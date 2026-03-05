@@ -21,10 +21,22 @@ def render() -> None:
 	has_source_audio = has_audio(state_manager.get_item('source_paths'))
 	has_source_image = has_image(state_manager.get_item('source_paths'))
 	SOURCE_FILE = gradio.File(
-		label = translator.get('uis.source_file'),
-		file_count = 'multiple',
-		value = state_manager.get_item('source_paths') if has_source_audio or has_source_image else None
-	)
+    label = translator.get('uis.target_file'),
+    value = state_manager.get_item('target_path') if is_target_image or is_target_video else None,
+    file_types = [
+        ".jpg", ".JPG", ".jpeg", ".JPEG",
+        ".png", ".PNG",
+        ".gif", ".GIF",
+        ".webp", ".WEBP",
+        ".bmp", ".BMP",
+        ".mp4", ".MP4",
+        ".avi", ".AVI",
+        ".mov", ".MOV",
+        ".mkv", ".MKV",
+        ".webm", ".WEBM",
+        ".flv", ".FLV"
+        ]
+    )
 	source_file_names = [ source_file_value.get('path') for source_file_value in SOURCE_FILE.value ] if SOURCE_FILE.value else None
 	source_audio_path = get_first(filter_audio_paths(source_file_names))
 	source_image_path = get_first(filter_image_paths(source_file_names))
