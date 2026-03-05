@@ -21,9 +21,22 @@ def render() -> None:
 	is_target_image = is_image(state_manager.get_item('target_path'))
 	is_target_video = is_video(state_manager.get_item('target_path'))
 	TARGET_FILE = gradio.File(
-		label = translator.get('uis.target_file'),
-		value = state_manager.get_item('target_path') if is_target_image or is_target_video else None
-	)
+    label = translator.get('uis.target_file'),
+    value = state_manager.get_item('target_path') if is_target_image or is_target_video else None,
+    file_types = [
+        ".jpg", ".JPG", ".jpeg", ".JPEG",
+        ".png", ".PNG",
+        ".gif", ".GIF",
+        ".webp", ".WEBP",
+        ".bmp", ".BMP",
+        ".mp4", ".MP4",
+        ".avi", ".AVI",
+        ".mov", ".MOV",
+        ".mkv", ".MKV",
+        ".webm", ".WEBM",
+        ".flv", ".FLV"
+        ]
+    )
 	target_image_options : ComponentOptions =\
 	{
 		'show_label': False,
